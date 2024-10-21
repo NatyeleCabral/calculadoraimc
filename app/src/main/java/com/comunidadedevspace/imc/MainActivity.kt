@@ -1,5 +1,6 @@
 package com.comunidadedevspace.imc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,11 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Recuperar os componentes EditText
-        //Criar variavel e associar o componente de UI<EditText>
-
-        //Colocar ação no botão
-
         val edtpeso = findViewById<TextInputEditText>(R.id.text_peso)
         val edtaltura = findViewById<TextInputEditText>(R.id.text_altura)
         val btnCalcular = findViewById<Button>(R.id.btn_calcular)
@@ -26,7 +22,6 @@ class MainActivity : AppCompatActivity() {
             val alturaStr: String = edtaltura.text. toString()
 
             if (pesoStr == "" || alturaStr == "") {
-                //Mostrar mensagem para o usuario
 
                 Snackbar.make(edtpeso,
                         "Preencha todos os campos",
@@ -38,6 +33,17 @@ class MainActivity : AppCompatActivity() {
 
                 val alturaQ2 = altura * altura
                 val resultado = peso / alturaQ2
+
+                // Navegar para proxima tela
+                // Criar Layout na proxima tela
+                //Passar dados para proxima tela "Resultado"
+
+                //Intent - Classe do proprio Android
+
+                val intent = Intent(this, ResultActivity2::class.java)
+                intent.putExtra(KEY_RESULT_IMC, resultado)
+                startActivity(intent)
+
                 println("Natyele" + resultado)
             }
 
